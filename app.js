@@ -27,18 +27,52 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var journey = {
+	'Seville': {
+		location: 'Seville',
+		description: '',
+		nextLocation: 'Canary Islands'
+	},
+	'Canary Islands': {
+		location: 'Canary Islands',
+		description: '',
+		nextLocation: 'Cape Verde'
+	},
+	'Cape Verde': {
+		location: 'Cape Verde',
+		description: '',
+		nextLocation: 'Strait of Magellan'
+	},
+	'Strait of Magellan': {
+		location: 'Strait of Magellan',
+		description: '',
+		nextLocation: 'Guam'
+	},
+	'Guam': {
+		location: 'Guam',
+		description: '',
+		nextLocation: 'Philippines'
+	},
+	'Philippines': {
+		location: 'Philippines',
+		description: '',
+		nextLocation: "And we're done"
+	}
+};
+
  app.get('/', function(req, res){
- 	res.render('index',{
-		title:"Magellan's Journey!"
-	})
- });
+ 	res.render('index', journey.Seville)
+})
 
  app.get('/destination', function(req, res){
- 	var location = req.query.test;
- 	console.log(location)
- 	res.send(location);
- 
- }); 
+ 	var nextStop = req.query.hereNext;
+
+ 	if(nextStop in journey){
+ 		var whereTo = journey[nextStop];
+ 		console.log(whereTo)
+ 		res.send(whereTo);
+ 	}
+ })
 
  // app.get('/seville', function(req, res){
 

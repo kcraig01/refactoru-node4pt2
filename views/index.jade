@@ -1,29 +1,11 @@
 extends layout
 
 block content
-	h1 Magellans Journey
-	p Welcome to #{title}
-	img#map(src= 'http://09explorationperiod2.pbworks.com/f/1255043643/JS%20FM%20route%20map004.jpg')
-	
-	div#seville
-		p You have landed at Magellan's first stop: Seville. 
-		a#canary
-			button#button1(type= 'button') Next Stop: Canary Islands!
-
-	div#canary.hidden Hi I am the Canary Islands
-		p You have landed at Magellan's second stop, the Canary Islands.
-		a#capeverde(href= '/capeverde') 
-			button#button2(type= 'button') Next Stop: Cape Verde.
-	div#capeVerde.hidden Hi I am Cape Verde
-		p You have landed at Magellan's third stop, Cape Verde.
-		a#straitMagellan(href= '/straitMagellan') 
-			button#button3(type= 'button') Click here to move to Magellan's next destination, Strait of Magellan.
-	div#magellan.hidden Hi I am the Strait of Magellan 
-		a#guam(href= '/guam') 
-			button#button4(type= 'button') Click here to move to Magellan's next destination, Guam. 
-	div#guam.hidden Hi I am Guam!
-		a#philippines(href= '/philippines') 
-			button#button5(type= 'button') Click here to move to Magellan's last stop, the Philippines.
-	div#philippines.hidden You've made it to Magellan's last stop - the Philippines.
-
-	div#currentlocation
+	div#journey	
+		h1 Magellans Journey
+		img#map(src= 'http://09explorationperiod2.pbworks.com/f/1255043643/JS%20FM%20route%20map004.jpg')
+	div#journey2
+		h1#location You have landed in #{location}
+		h2#description A little more about this location: #{description}
+		h5#button Click below to move to the next location:
+		a#go.btn.btn-primary.btn-large #{nextLocation}

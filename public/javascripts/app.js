@@ -1,19 +1,28 @@
 $(function(){
-	$("[class*='hidden']").css("display", "none");
 
+	$('#go').on('click', function(){
+		var hereNext = $(this).text()
+		console.log(hereNext);
+		var whereNext = {
+			hereNext: hereNext
+		}
 
-	$("[id*='button']").on('click', function(){
-		var currentLocation = $(this).closest('div');
-		var nextLocation = currentLocation.next('div');
-		console.log(nextLocation)
-		var goHere = {
-			test: nextLocation
-		};
-		$.get('/destination', goHere, function(destination){
+		// var currentLocation = $(this).closest('div');
+		// var nextLocation = currentLocation.next('div');
+		// console.log(nextLocation)
+		// var goHere = {
+		// 	test: nextLocation
+		// };
+		$.get('/destination', whereNext, function(destination){
 			// $(destination).css("display", "inline" );
-			$('#currentlocation').append(destination);
+			console.log(destination);
+			$('#location').text("You have landed in "+destination.location);
+			$('#description').text("Description "+destination.description);
+			console.log(destination.nextLocation)
+			$('#go').text(destination.nextLocation);
+
 		})
-		console.log(destination);
+		
 	});
 
 
